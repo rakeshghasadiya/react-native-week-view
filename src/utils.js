@@ -3,6 +3,9 @@ import moment from 'moment';
 export const getFormattedDate = (date, format) => {
   return moment(date).format(format);
 };
+export const getFormattedDateName = (date, format) => {
+  return moment(date).format('ddd');
+};
 
 export const setLocale = (locale) => {
   moment.locale(locale);

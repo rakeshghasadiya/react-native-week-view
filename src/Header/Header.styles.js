@@ -18,13 +18,34 @@ const styles = StyleSheet.create({
   column: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
+    marginBottom: 10,
     borderColor: '#fff',
-    borderTopWidth: 1,
-    borderLeftWidth: 1,
+  },
+  onedaycolumn: {
+    flex: 1,
+    alignItems: 'flex-start',
+    justifyContent: 'flex-end',
+    marginBottom: 10,
+    borderColor: '#fff',
+    marginLeft: 20,
   },
   text: {
-    color: '#fff',
+    textAlign: 'center',
+    color: '#4A4A4A',
+  },
+  CircleShapeView: {
+    width: 40,
+    justifyContent: 'center',
+    height: 40,
+    borderRadius: 40 / 2,
+    backgroundColor: '#7ed221'
+  },
+  daynametext: {
+    width: 40,
+    textAlign: 'center',
+    color: '#7ed221',
+    fontWeight: 'bold',
   },
 });
 

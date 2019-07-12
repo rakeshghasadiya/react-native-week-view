@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Text, View } from 'react-native';
 import moment from 'moment';
 
-import { getFormattedDate, getCurrentMonth } from '../utils';
+import { getFormattedDate, getFormattedDateName, getCurrentMonth } from '../utils';
 
 import styles from './Header.styles';
 
@@ -38,24 +38,45 @@ const getDayTextStyles = (numberOfDays) => {
 };
 
 const Column = ({
-  column, numberOfDays, format,
+  column, numberOfDays, format, index
 }) => {
-  return (
-    <View style={styles.column}>
-      <Text style={[styles.text, getDayTextStyles(numberOfDays)]}>
-        {getFormattedDate(column, format)}
-      </Text>
-    </View>
-  );
+  if (numberOfDays == 1) {
+    return (
+      <View style={styles.onedaycolumn}>
+        <Text style={[styles.daynametext, getDayTextStyles(numberOfDays)]}>
+          {getFormattedDateName(column, format)}
+        </Text>
+        <View style={styles.CircleShapeView}>
+          <Text style={[styles.text, getDayTextStyles(numberOfDays), { color: '#FFFFFF' }]}>
+            {getFormattedDate(column, format)}
+          </Text>
+        </View>
+      </View>
+    );
+  } else {
+
+    let color = index == 0 ? '#7ed221' : '#4A4A4A';
+    return (
+      <View style={styles.column}>
+        <Text style={[styles.daynametext, getDayTextStyles(numberOfDays), { color: color }]}>
+          {getFormattedDateName(column, format)}
+        </Text>
+        <Text style={[styles.text, getDayTextStyles(numberOfDays), { color: color }]}>
+          {getFormattedDate(column, format)}
+        </Text>
+      </View>
+    );
+  }
 };
 
 const Columns = ({ columns, numberOfDays, format }) => {
   return (
     <View style={styles.columns}>
-      {columns.map((column) => {
+      {columns.map((column, index) => {
         return (
           <Column
             key={column}
+            index={index}
             column={column}
             numberOfDays={numberOfDays}
             format={format}
@@ -84,7 +105,8 @@ const WeekViewHeader = ({
   const columns = getColumns(numberOfDays, selectedDate);
   return (
     <View style={[styles.container, style]}>
-      <Title numberOfDays={numberOfDays} selectedDate={selectedDate} />
+      {numberOfDays == 1 ? null : <View style={styles.title} />}
+      {/* <Title numberOfDays={numberOfDays} selectedDate={selectedDate} /> */}
       {columns && <Columns format={formatDate} columns={columns} numberOfDays={numberOfDays} />}
     </View>
   );
