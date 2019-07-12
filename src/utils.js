@@ -18,3 +18,7 @@ export const addLocale = (locale, obj) => {
 export const getCurrentMonth = (date) => {
   return moment(date).format('MMMM Y');
 };
+
+export const getFormatedDate = (date) => {
+  return moment(date).format('YYYY-MM-DD');
+};

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Text, View } from 'react-native';
 import moment from 'moment';
 
-import { getFormattedDate, getFormattedDateName, getCurrentMonth } from '../utils';
+import { getFormattedDate, getFormattedDateName, getCurrentMonth,getFormatedDate } from '../utils';
 
 import styles from './Header.styles';
 
@@ -54,11 +54,13 @@ const Column = ({
       </View>
     );
   } else {
-
-    let color = index == 0 ? '#7ed221' : '#4A4A4A';
+      console.log(getFormatedDate(new Date()))
+      console.log(getFormatedDate(column))
+    let color = getFormatedDate(new Date()) == getFormatedDate(column) ? '#7ed221' : '#4A4A4A';
     return (
       <View style={styles.column}>
         <Text style={[styles.daynametext, getDayTextStyles(numberOfDays), { color: color }]}>
+        
           {getFormattedDateName(column, format)}
         </Text>
         <Text style={[styles.text, getDayTextStyles(numberOfDays), { color: color }]}>
