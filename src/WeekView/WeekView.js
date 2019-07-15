@@ -28,7 +28,7 @@ export default class WeekView extends Component {
 
   componentDidMount() {
     requestAnimationFrame(() => {
-      this.calendar.scrollTo({ y: 0, x: 2 * (SCREEN_WIDTH - 60), animated: false });
+      this.calendar&& this.calendar.scrollTo({ y: 0, x: 2 * (SCREEN_WIDTH - 60), animated: false });
     });
   }
 
