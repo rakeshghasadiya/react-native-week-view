@@ -41,6 +41,12 @@ const styles = StyleSheet.create({
     borderRadius: 40 / 2,
     backgroundColor: '#7ed221'
   },
+  oneDayTitleView: {
+    width: 40,
+    justifyContent: 'center',
+    height: 40,
+    borderRadius: 40 / 2
+  },
   daynametext: {
     width: 40,
     textAlign: 'center',

@@ -40,22 +40,23 @@ const getDayTextStyles = (numberOfDays) => {
 const Column = ({
   column, numberOfDays, format, index
 }) => {
- /* if (numberOfDays == 1) {
+   if (numberOfDays == 1) {
+
+    let isCurrentDay = getFormatedDate(new Date()) == getFormatedDate(column) ? true : false;
     return (
       <View style={styles.onedaycolumn}>
-        <Text style={[styles.daynametext, getDayTextStyles(numberOfDays)]}>
+        <Text style={[styles.daynametext, getDayTextStyles(numberOfDays), { color: isCurrentDay?'#7ed221':'#4A4A4A' }]}>
           {getFormattedDateName(column, format)}
         </Text>
-        <View style={styles.CircleShapeView}>
-          <Text style={[styles.text, getDayTextStyles(numberOfDays), { color: '#FFFFFF' }]}>
+        <View style={ isCurrentDay?styles.CircleShapeView:styles.oneDayTitleView}>
+          <Text style={[styles.text, getDayTextStyles(numberOfDays), { color: isCurrentDay?'#FFFFFF':'#4A4A4A' }]}>
             {getFormattedDate(column, format)}
           </Text>
         </View>
       </View>
     );
-  } else {*/
-      console.log(getFormatedDate(new Date()))
-      console.log(getFormatedDate(column))
+  } else { 
+       
     let color = getFormatedDate(new Date()) == getFormatedDate(column) ? '#7ed221' : '#4A4A4A';
     return (
       <View style={styles.column}>
@@ -68,7 +69,7 @@ const Column = ({
         </Text>
       </View>
     );
-  //}
+   }
 };
 
 const Columns = ({ columns, numberOfDays, format }) => {
