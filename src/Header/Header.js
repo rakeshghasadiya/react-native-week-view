@@ -40,7 +40,7 @@ const getDayTextStyles = (numberOfDays) => {
 const Column = ({
   column, numberOfDays, format, index
 }) => {
-  if (numberOfDays == 1) {
+ /* if (numberOfDays == 1) {
     return (
       <View style={styles.onedaycolumn}>
         <Text style={[styles.daynametext, getDayTextStyles(numberOfDays)]}>
@@ -53,7 +53,7 @@ const Column = ({
         </View>
       </View>
     );
-  } else {
+  } else {*/
       console.log(getFormatedDate(new Date()))
       console.log(getFormatedDate(column))
     let color = getFormatedDate(new Date()) == getFormatedDate(column) ? '#7ed221' : '#4A4A4A';
@@ -68,7 +68,7 @@ const Column = ({
         </Text>
       </View>
     );
-  }
+  //}
 };
 
 const Columns = ({ columns, numberOfDays, format }) => {
